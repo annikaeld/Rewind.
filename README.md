@@ -27,4 +27,4 @@ Social media site allowing a logged in user:
 
 The project page is on https://github.com/annikaeld/javascript2. Raise an [issue](https://github.com/annikaeld/javascript2/issues) on the project page if you have any feedback.
 
-My linkedin page (link to: https://www.linkedin.com/in/annika-eld%C3%B8y-6ba352198/)
+[My linkedin page](https://www.linkedin.com/in/annika-eld%C3%B8y-6ba352198/)
