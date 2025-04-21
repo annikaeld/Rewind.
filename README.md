@@ -17,11 +17,29 @@ Social media site allowing a logged in user:
 - delete a post
 - search posts feed
 
-## Built With
+## Setup
+
+```bash
+npm install
+```
+
+For development:
+
+```bash
+npm run dev
+```
+
+For production
+
+```bash
+npm run build
+```
+
+## Tech stack
 
 - HTML
-- CSS
-- JavaScript
+- Vanilla JS
+- Tailwind CSS
 
 ## Contributing/Contact
 
