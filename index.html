@@ -1,24 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="js/api/auth/login.js"></script>
     <title>Login</title>
 </head>
-<body>
-    <h1>Login</h1>
-    <form id="loginForm">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button type="submit">Login</button>
-    </form>
-    <script type="module" src="js/api/auth/login.js"></script>
-    <div id="error-message" style="color: red;">Errors here</div>
-    <div id="success-message" style="color: green;">Success here</div>
-    <a href="register.html">Register</a>
+
+<body class="min-h-screen bg-slate-50 dark:bg-black dark:text-white">
+    <header class=" bg-pink-700 text-white sticky top-0 z-10">
+        <section class="max-w-4xl mx-auto p-4 flex justify-between items-center">
+            <h1 class="class text-3xl font-medium">
+                <a href="/feed/index.html">🧁 Baking Heaven</a>
+            </h1>
+            <div>
+                <button id="mobile-open-button" class="text-3xl sm:hidden focus:outline-none">
+                    &#9776;
+                </button>
+                <nav class="sm:relative absolute top-full left-0 px-2 w-full bg-pink-700 flex-col sm:flex sm:flex-row space-x-8 text-xl hidden"
+                    aria-label="main">
+                    <a href=" /feed" class="hover:opacity-90">Feed</a>
+                    <a href="/profile" class="hover:opacity-90">Profile</a>
+                    <a href="/index.html" class="hover:opacity-90"><i class="fa fa-power-off"
+                            aria-hidden="true"></i></a>
+                </nav>
+            </div>
+        </section>
+    </header>
+    <main class="w-full max-w-xs mx-auto mt-8">
+        <form id="loginForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 dark:bg-zinc-200">
+            <p class="font-bold mb-4 text-center dark:text-black">Sign in</p>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                    Username
+                </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="mb-6 dark:text-black">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    Password
+                </label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    input type="password" name="password" id="password" minlength="8"
+                    title="Must contain at least 8 or more characters" placeholder="Password" required>
+                <input class="py-2 px-3" type="checkbox" onclick="myFunction()"> Show Password
+            </div>
+            <div class="items-center">
+                <div>
+                    <button class="bg-pink-600 hover:bg-pink-400 text-white font-bold py-2 px-4 rounded focus:outline-none
+                        focus:shadow-outline min-w-full" type="submit">
+                        Sign In
+                    </button>
+                </div>
+                <div id="error-message" style="color: red;">Errors here</div>
+                <div id="success-message" style="color: green;">Success here</div>
+                <div>
+                    <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                        href="register.html">
+                        Sign up?
+                    </a>
+                    <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+                        Forgot Password?
+                    </a>
+                </div>
+            </div>
+        </form>
+
+    </main>
 </body>
+
 </html>
