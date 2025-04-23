@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg" href="/img/small-logo.png">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="js/api/auth/login.js"></script>
+    <title>Login</title>
+</head>
+
+<body class="min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-50">
+    <header class="bg-zinc-50 sticky top-0 z-10">
+        <section class="max-w-4xl mx-auto p-4 flex justify-between items-space-between">
+            <h1 class="class text-3xl font-medium">
+                <a href="#top"><img src="./img/rewind-logo.png" alt="Rewind logo"
+                        class="inline-block h-20 bg-zinc-50 rounded-md p-1 dark:bg-zinc-900"></a>
+            </h1>
+        </section>
+    </header>
+
+    <!-- Create Post Section -->
+    <section class="max-w-xl mx-auto mt-6 p-4 bg-white dark:bg-zinc-700 rounded-xl shadow-sm">
+        <textarea
+            class="w-full p-2 border dark:border-zinc-500 rounded-md bg-zinc-50 dark:bg-zinc-600 dark:text-white dark:placeholder:text-white"
+            placeholder="What's on your mind?"></textarea>
+
+        <!-- input for image URL -->
+        <input type="url" placeholder="Paste image URL (optional)"
+            class="mt-2 w-full p-2 border dark:border-zinc-500 rounded-md bg-zinc-50 dark:bg-zinc-600 dark:text-white dark:placeholder:text-white text-sm" />
+
+        <div class="mt-2 flex justify-end">
+            <button class="bg-lime-400 text-black px-4 py-1 rounded-md font-semibold hover:bg-lime-300">Post</button>
+        </div>
+    </section>
+
+    <!-- Post Feed -->
+    <main class="max-w-xl mx-auto mt-4 space-y-4 pb-10 px-4" id="feed">
+        <div class="max-w-5xl grid grid-cols-1 sm:grid-cols-3 mx-auto p-4 gap-5 mb-12 justify-items-center"></div>
+    </main>
+    <script type="module">
+        import { loadPosts } from './js/ui/loadPosts.js';
+
+        loadPosts();
+    </script>
+</body>
+
+</html>

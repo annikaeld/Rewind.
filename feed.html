@@ -1,15 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feed</title>
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Annika's Profile | Baking Heaven</title>
 </head>
-<body>
-    <h1>Welcome to the Feed</h1>
-    <div id="feed-container">
-        <!-- Feed content will be dynamically loaded here -->
-    </div>
-    <script type="module" src="js/feed.js"></script>
+
+<body class="min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-50">
+    <header class="bg-zinc-50 sticky top-0 z-10">
+        <section class="max-w-4xl mx-auto p-4 flex justify-between items-center">
+            <h1 class="class text-3xl font-medium">
+                <a href="/feed/index.html">🧁 Baking Heaven</a>
+            </h1>
+            <div>
+                <button id="mobile-open-button" class="text-3xl sm:hidden focus:outline-none">
+                    &#9776;
+                </button>
+                <nav class="sm:relative absolute top-full left-0 px-2 w-full bg-pink-700 flex-col sm:flex sm:flex-row space-x-8 text-xl hidden"
+                    aria-label="main">
+                    <a href=" /feed" class="hover:opacity-90">Feed</a>
+                    <a href="/profile" class="hover:opacity-90 underline">Profile</a>
+                    <a href="/index.html" class="hover:opacity-90"><i class="fa fa-power-off"
+                            aria-hidden="true"></i></a>
+                </nav>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section class="flex justify-center">
+            <div
+                class="w-full sm:w-1/2 mx-auto bg-white shadow-lg p-6 relative flex flex-row items-center space-y-0 space-x-6 dark:bg-zinc-200">
+                <div class="rounded-full grid place-content-center">
+                    <img src="/img/profile.jpg" alt="profile picture" class="rounded-full w-16 h-16 object-contain">
+                </div>
+                <div class="text-left text-black font-semibold">
+                    <h4>Annika</h4>
+                    <div class="flex justify-center sm:justify-start space-x-6 mt-3">
+                        <div class="text-center">
+                            <p class="text-lg font-semibold">131</p>
+                            <p class="text-sm text-gray-500">Posts</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-lg font-semibold">188</p>
+                            <p class="text-sm text-gray-500">Followers</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-lg font-semibold">200</p>
+                            <p class="text-sm text-gray-500">Following</p>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <button type=""
+                            class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Follow</button>
+                        <button type=""
+                            class="bg-transparent hover:bg-pink-600 text-blue-700 border hover:border-transparent border-blue-500 py-2 px-4 rounded hover:text-white">Message</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="max-w-xl mx-auto mt-4 space-y-4 pb-10 px-4" id="feed">
+            </div>
+
+        </section>
+    </main>
+    <script type="module">
+        import { loadPosts } from './js/ui/loadPosts.js';
+
+        loadPosts();
+    </script>
 </body>
+
 </html>
