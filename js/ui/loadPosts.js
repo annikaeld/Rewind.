@@ -9,14 +9,15 @@ export async function loadPosts() {
       postElement.className =
         "p-4 bg-white dark:bg-zinc-700 dark:border-zinc-600 rounded-lg shadow-sm";
       postElement.innerHTML = `
-                ${
-                  post.media
-                    ? `<img class="rounded-md mb-2" src="${post.media.url}" alt="${post.title}">`
-                    : ""
-                }
+                <a href="/post/?id=${post.id}">
+                ${post.media
+          ? `<img class="rounded-md mb-2" src="${post.media.url}" alt="${post.title}">`
+          : ""
+        }
                 <div>
                     <div class="font-semibold mb-1">${post.title}</div>
                 </div>
+                </a>
             `;
       postsContainer.appendChild(postElement);
     });
@@ -24,3 +25,4 @@ export async function loadPosts() {
     console.error("Error loading posts:", error);
   }
 }
+loadPosts();

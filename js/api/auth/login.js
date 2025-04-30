@@ -13,7 +13,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     clearMessages(errorMessageDiv, successMessageDiv);
 
     try {
-        const { response, data } = await request(`${API_BASE}/${API_AUTH}/${API_LOGIN}`, 'POST', { email, password });
+        const { response, data } = await request(API_BASE + API_AUTH + API_LOGIN, 'POST', { email, password });
 
         if (response.ok) {
             const { accessToken, ...profile } = data.data;
@@ -21,7 +21,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             save('profile', profile);
             displaySuccess(successMessageDiv, 'Login successful! Redirecting to the feed...');
             setTimeout(() => {
-                window.location.href = 'feed.html';
+                window.location.href = 'feed';
             }, 2000);
         } else {
             displayErrors(errorMessageDiv, data.errors);

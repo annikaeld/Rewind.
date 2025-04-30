@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Annika's Profile | Baking Heaven</title>
-</head>
-
+    <script type="module" src="/js/ui/loadPosts.js" defer></script>
+</head>    
 <body class="min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-50">
     <header class="bg-zinc-50 sticky top-0 z-10">
         <section class="max-w-4xl mx-auto p-4 flex justify-between items-center">
             <h1 class="class text-3xl font-medium">
-                <a href="/feed/index.html">🧁 Baking Heaven</a>
+                <a href="#top"><img src="/img/rewind-logo.png" alt="Rewind logo"
+                        class="inline-block h-20 bg-zinc-50 rounded-md p-1 dark:bg-zinc-900"></a>
             </h1>
             <div>
                 <button id="mobile-open-button" class="text-3xl sm:hidden focus:outline-none">
@@ -24,7 +25,7 @@
                     aria-label="main">
                     <a href=" /feed" class="hover:opacity-90">Feed</a>
                     <a href="/profile" class="hover:opacity-90 underline">Profile</a>
-                    <a href="/index.html" class="hover:opacity-90"><i class="fa fa-power-off"
+                    <a href="/" class="hover:opacity-90"><i class="fa fa-power-off"
                             aria-hidden="true"></i></a>
                 </nav>
             </div>
@@ -68,11 +69,6 @@
 
         </section>
     </main>
-    <script type="module">
-        import { loadPosts } from './js/ui/loadPosts.js';
-
-        loadPosts();
-    </script>
 </body>
 
 </html>

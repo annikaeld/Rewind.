@@ -12,12 +12,12 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     clearMessages(errorMessageDiv, successMessageDiv);
 
     try {
-        const { response, data } = await request(`${API_BASE}/${API_AUTH}/${API_REGISTER}`, 'POST', { name, email, password });
+        const { response, data } = await request(API_BASE + API_AUTH + API_REGISTER, 'POST', { name, email, password });
 
         if (response.ok) {
             displaySuccess(successMessageDiv, 'Registration successful! You can now log in.');
             setTimeout(() => {
-                window.location.href = 'index.html';
+                window.location.href = '/';
             }, 2000);
         } else {
             displayErrors(errorMessageDiv, data.errors);
