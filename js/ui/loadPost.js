@@ -1,15 +1,17 @@
 import { getPost } from '/js/api/post.js';
+import { deletePost } from '/js/api/post.js';
     
 async function loadPostById(postId) {
     const postContainer = document.getElementById('post-container');
     try {
         const post = await getPost(postId);
-        console.log(post);
         if (post) {
             postContainer.innerHTML = `
                 <h2 class="text-2xl font-bold mb-4">${post.title}</h2>
                 ${post.media ? `<img src="${post.media.url}" alt="${post.title}" class="rounded-md mb-4">` : ''}
                 <p>${post.body}</p>
+                ${post.tags && post.tags.length > 0 ? `<p class="mt-2"><strong>Tags:</strong> ${post.tags.join(', ')}</p>` : ''}
+                <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onclick="onClickDeletePost()">Delete</button>
             `;
         } else {
             postContainer.innerHTML = `<p class="text-red-500">Post not found.</p>`;
@@ -19,6 +21,14 @@ async function loadPostById(postId) {
         postContainer.innerHTML = `<p class="text-red-500">An error occurred while loading the post.</p>`;
     }
 }
+
+export async function onClickDeletePost() {
+    await deletePost(postId);
+    const postContainer = document.getElementById('post-container');
+    postContainer.innerHTML = `<p class="text-red-500">Post deleted.</p>`;
+}
+// Attach deletePost to the window object to make it globally accessible
+window.onClickDeletePost = onClickDeletePost;
 
 const urlParams = new URLSearchParams(window.location.search);
 const postId = urlParams.get('id');

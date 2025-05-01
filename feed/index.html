@@ -7,67 +7,48 @@
     <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Annika's Profile | Baking Heaven</title>
+    <title>Profile | Rewind</title>
     <script type="module" src="/js/ui/loadPosts.js" defer></script>
-</head>    
+    <script type="module" src="/js/ui/createPost.js"></script>
+</head>
+
 <body class="min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-50">
-    <header class="bg-zinc-50 sticky top-0 z-10">
-        <section class="max-w-4xl mx-auto p-4 flex justify-between items-center">
+    <header class="bg-zinc-50 dark:bg-zinc-900 sticky top-0 z-10">
+        <section class="max-w-4xl mx-auto p-4 flex justify-between items-space-between">
             <h1 class="class text-3xl font-medium">
                 <a href="#top"><img src="/img/rewind-logo.png" alt="Rewind logo"
                         class="inline-block h-20 bg-zinc-50 rounded-md p-1 dark:bg-zinc-900"></a>
             </h1>
-            <div>
-                <button id="mobile-open-button" class="text-3xl sm:hidden focus:outline-none">
-                    &#9776;
-                </button>
-                <nav class="sm:relative absolute top-full left-0 px-2 w-full bg-pink-700 flex-col sm:flex sm:flex-row space-x-8 text-xl hidden"
-                    aria-label="main">
-                    <a href=" /feed" class="hover:opacity-90">Feed</a>
-                    <a href="/profile" class="hover:opacity-90 underline">Profile</a>
-                    <a href="/" class="hover:opacity-90"><i class="fa fa-power-off"
-                            aria-hidden="true"></i></a>
-                </nav>
-            </div>
         </section>
     </header>
-    <main>
-        <section class="flex justify-center">
-            <div
-                class="w-full sm:w-1/2 mx-auto bg-white shadow-lg p-6 relative flex flex-row items-center space-y-0 space-x-6 dark:bg-zinc-200">
-                <div class="rounded-full grid place-content-center">
-                    <img src="/img/profile.jpg" alt="profile picture" class="rounded-full w-16 h-16 object-contain">
-                </div>
-                <div class="text-left text-black font-semibold">
-                    <h4>Annika</h4>
-                    <div class="flex justify-center sm:justify-start space-x-6 mt-3">
-                        <div class="text-center">
-                            <p class="text-lg font-semibold">131</p>
-                            <p class="text-sm text-gray-500">Posts</p>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-lg font-semibold">188</p>
-                            <p class="text-sm text-gray-500">Followers</p>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-lg font-semibold">200</p>
-                            <p class="text-sm text-gray-500">Following</p>
-                        </div>
-                    </div>
-                    <div class="pt-4">
-                        <button type=""
-                            class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Follow</button>
-                        <button type=""
-                            class="bg-transparent hover:bg-pink-600 text-blue-700 border hover:border-transparent border-blue-500 py-2 px-4 rounded hover:text-white">Message</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section>
-            <div class="max-w-xl mx-auto mt-4 space-y-4 pb-10 px-4" id="feed">
-            </div>
 
-        </section>
+    <!-- Create Post Section -->
+    <section class="max-w-xl mx-auto mt-6 p-4 bg-white dark:bg-zinc-700 rounded-xl shadow-sm">
+        <form id="createPostForm">
+            <input name="title" id="title" type="text" placeholder="Title"
+                class="w-full p-2 border dark:border-zinc-500 rounded-md bg-zinc-50 dark:bg-zinc-600 dark:text-white dark:placeholder:text-white" />
+            <textarea name="content" id="content"
+                class="w-full p-2 border dark:border-zinc-500 rounded-md bg-zinc-50 dark:bg-zinc-600 dark:text-white dark:placeholder:text-white"
+                placeholder="What's on your mind?" required></textarea>
+
+            <!-- Input for image URL -->
+            <input type="url" name="imageUrl" id="imageUrl" placeholder="Paste image URL (optional)"
+                class="mt-2 w-full p-2 border dark:border-zinc-500 rounded-md bg-zinc-50 dark:bg-zinc-600 dark:text-white dark:placeholder:text-white text-sm" />
+
+            <input name="tags" id="tags" type="text" placeholder="Tags (comma separated)"
+                class="w-full p-2 border dark:border-zinc-500 rounded-md bg-zinc-50 dark:bg-zinc-600 dark:text-white dark:placeholder:text-white" />
+            <div class="mt-2 flex justify-end">
+                <button type="submit"
+                    class="bg-lime-400 text-black px-4 py-1 rounded-md font-semibold hover:bg-lime-300">
+                    Post
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Post Feed -->
+    <main class="max-w-xl mx-auto mt-4 space-y-4 pb-10 px-4" id="feed">
+        <div class="max-w-5xl grid grid-cols-1 sm:grid-cols-3 mx-auto p-4 gap-5 mb-12 justify-items-center"></div>
     </main>
 </body>
 
