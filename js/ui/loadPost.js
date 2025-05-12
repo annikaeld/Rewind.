@@ -10,8 +10,12 @@ async function loadPostById(postId) {
                 <h2 class="text-2xl font-bold mb-4">${post.title}</h2>
                 ${post.media ? `<img src="${post.media.url}" alt="${post.title}" class="rounded-md mb-4">` : ''}
                 <p>${post.body}</p>
+                <div class="text-sm text-gray-500">${post.author.name}</div>
                 ${post.tags && post.tags.length > 0 ? `<p class="mt-2"><strong>Tags:</strong> ${post.tags.join(', ')}</p>` : ''}
-                <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onclick="onClickDeletePost()">Delete</button>
+                ${post.editable ? `
+                    <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onclick="onClickEditPost()">Edit</button>
+                    <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onclick="onClickDeletePost()">Delete</button>
+                ` : ''}
             `;
         } else {
             postContainer.innerHTML = `<p class="text-red-500">Post not found.</p>`;
@@ -22,12 +26,17 @@ async function loadPostById(postId) {
     }
 }
 
+export async function onClickEditPost() {
+    window.location.href = `/post/edit.html?id=${postId}`;
+}
+
 export async function onClickDeletePost() {
     await deletePost(postId);
     const postContainer = document.getElementById('post-container');
     postContainer.innerHTML = `<p class="text-red-500">Post deleted.</p>`;
 }
-// Attach deletePost to the window object to make it globally accessible
+// Attach functions to the window object to make them globally accessible
+window.onClickEditPost = onClickEditPost;
 window.onClickDeletePost = onClickDeletePost;
 
 const urlParams = new URLSearchParams(window.location.search);

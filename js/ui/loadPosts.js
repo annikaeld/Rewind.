@@ -16,6 +16,7 @@ export async function loadPosts() {
         }
                 <div>
                     <div class="font-semibold mb-1">${post.title}</div>
+                    <div class="text-sm text-gray-500">${post.author.name}</div>
                 </div>
                 </a>
             `;
