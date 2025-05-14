@@ -1,6 +1,6 @@
 # javascript2
 
-![image]()
+![Project Logo](img/rewind-logo.png)
 
 JavaScript techniques applied to implement the front-end functionality for a social media application
 
