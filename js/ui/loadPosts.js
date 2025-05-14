@@ -1,9 +1,11 @@
 import { getPosts } from "../api/posts.js";
 
-export async function loadPosts() {
+export async function loadPosts(posts) {
   const postsContainer = document.getElementById("feed");
+  postsContainer.innerHTML = ""; // Clear existing posts
+  console.log("loadPosts");
   try {
-    const posts = await getPosts();
+
     posts.data.forEach((post) => {
       const postElement = document.createElement("div");
       postElement.className =
@@ -26,4 +28,11 @@ export async function loadPosts() {
     console.error("Error loading posts:", error);
   }
 }
-loadPosts();
+
+export async function loadAllPosts() {
+  const postsContainer = document.getElementById("feed");
+  postsContainer.innerHTML = ""; // Clear existing posts
+  const posts = await getPosts();
+  await loadPosts(posts);
+}
+loadAllPosts();
