@@ -7,7 +7,7 @@ async function loadPostById(postId) {
     const post = await getPost(postId);
     if (post) {
       postContainer.innerHTML = `
-      <div class="max-h-screen w-auto border">
+      <div class="max-h-screen w-auto">
                 <h2 class="font-semibold mb-1">${post.title}</h2>
                 ${
                   post.media

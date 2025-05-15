@@ -8,7 +8,7 @@ export async function loadPosts(posts) {
     posts.data.forEach((post) => {
       const postElement = document.createElement("div");
       postElement.className =
-        "p-4 bg-white dark:bg-zinc-700 dark:border-zinc-600 rounded-lg shadow-sm border-indigo-950 border-1";
+        "p-4 bg-white border border-zinc-200 dark:bg-zinc-700 dark:border-zinc-600 rounded-lg shadow-md";
       postElement.innerHTML = `
                 <a href="/post/?id=${post.id}">
                 ${

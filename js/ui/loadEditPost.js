@@ -24,21 +24,21 @@ async function loadEditPostById(postId) {
         <form id="editPostForm">
             <input name="title" id="title" type="text" placeholder="Title" value="${
               post.title
-            }" class="w-full p-2 border dark:border-zinc-500 rounded-md bg-zinc-100 dark:bg-zinc-600 dark:text-white dark:placeholder:text-white">
-            <textarea name="content" id="content" class="w-full p-2 border dark:border-zinc-500 rounded-md bg-zinc-100 dark:bg-zinc-600 dark:text-white dark:placeholder:text-white" placeholder="What's on your mind?" required="">${
+            }" class="w-full p-2 border dark:border-zinc-500 rounded-md bg-zinc-100 dark:bg-zinc-600 dark:text-white dark:placeholder:text-white placeholder-gray-500 mt-4">
+            <textarea name="content" id="content" class="w-full p-2 border dark:border-zinc-500 rounded-md bg-zinc-100 dark:bg-zinc-600 dark:text-white mt-2 dark:placeholder:text-white placeholder-gray-500 mt-4" placeholder="What's on your mind?" required="">${
               post.body
             }</textarea>
 
             <!-- Input for image URL -->
             <input type="url" name="imageUrl" id="imageUrl" placeholder="Paste image URL (optional)" value="${
               post.media.url
-            }" class="mt-2 w-full p-2 border dark:border-zinc-500 rounded-md bg-zinc-100 dark:bg-zinc-600 dark:text-white dark:placeholder:text-white text-sm">
+            }" class="mt-4 w-full p-2 border dark:border-zinc-500 rounded-md bg-zinc-100 dark:bg-zinc-600 dark:text-white dark:placeholder:text-white placeholder-gray-500 text-sm">
 
             <input name="tags" id="tags" type="text" placeholder="Tags (comma separated)" value="${
               post.tags && post.tags.length > 0 ? `${post.tags.join(", ")}` : ""
-            }" class="w-full p-2 border dark:border-zinc-500 rounded-md bg-zinc-100 dark:bg-zinc-600 dark:text-white dark:placeholder:text-white">
+            }" class="w-full p-2 mt-4 border dark:border-zinc-500 rounded-md bg-zinc-100 dark:bg-zinc-600 dark:text-white dark:placeholder:text-white placeholder-gray-500">
             <div class="mt-2 flex justify-end">
-                <button type="submit" class="bg-lime-400 text-black px-4 py-1 rounded-md font-semibold hover:bg-lime-300">
+                <button type="submit" class="bg-lime-400 mt-4 text-black px-4 py-1 rounded-md font-semibold hover:bg-lime-300">
                     Save
                 </button>
             </div>
