@@ -7,10 +7,13 @@ async function loadPostById(postId) {
     const post = await getPost(postId);
     if (post) {
       postContainer.innerHTML = `
-                <h2 class="text-2xl font-bold mb-4">${post.title}</h2>
+      <div class="max-h-screen w-auto border">
+                <h2 class="font-semibold mb-1">${post.title}</h2>
                 ${
                   post.media
-                    ? `<img src="${post.media.url}" alt="${post.title}" class="rounded-md mb-4">`
+                    ? `<div class="flex justify-center">
+                    <img src="${post.media.url}" alt="${post.title}" class="rounded-md mb-4">
+                    </div>`
                     : ""
                 }
                 <p>${post.body}</p>
@@ -24,13 +27,15 @@ async function loadPostById(postId) {
                 }
                 ${
                   post.editable
-                    ? `
+                    ? `<div class="flex justify-end space-x-2">
                     <button  class="bg-lime-400 text-black px-4 py-1 rounded-md font-semibold hover:bg-lime-300" onclick="onClickEditPost()">Edit</button>
                     <button  class="bg-lime-400 text-black px-4 py-1 rounded-md font-semibold hover:bg-lime-300" onclick="onClickDeletePost()">Delete</button>
-                `
+                    </div>`
                     : ""
                 }
-            `;
+                
+     
+      </div>`;
     } else {
       postContainer.innerHTML = `<p class="text-red-500">Post not found.</p>`;
     }

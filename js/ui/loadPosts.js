@@ -5,17 +5,19 @@ export async function loadPosts(posts) {
   postsContainer.innerHTML = ""; // Clear existing posts
   console.log("loadPosts");
   try {
-
     posts.data.forEach((post) => {
       const postElement = document.createElement("div");
       postElement.className =
-        "p-4 bg-white dark:bg-zinc-700 dark:border-zinc-600 rounded-lg shadow-sm";
+        "p-4 bg-white dark:bg-zinc-700 dark:border-zinc-600 rounded-lg shadow-sm border-indigo-950 border-1";
       postElement.innerHTML = `
                 <a href="/post/?id=${post.id}">
-                ${post.media
-          ? `<img class="rounded-md mb-2" src="${post.media.url}" alt="${post.title}">`
-          : ""
-        }
+                ${
+                  post.media
+                    ? `<div class="flex justify-center">
+                    <img class="rounded-md mb-2 justify-center" src="${post.media.url}" alt="${post.title}">
+                    </div>`
+                    : ""
+                }
                 <div>
                     <div class="font-semibold mb-1">${post.title}</div>
                     <div class="text-sm text-gray-500">${post.author.name}</div>
