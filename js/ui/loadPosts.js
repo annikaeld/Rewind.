@@ -8,7 +8,7 @@ export async function loadPosts(posts) {
     posts.data.forEach((post) => {
       const postElement = document.createElement("div");
       postElement.className =
-        "p-4 bg-white border border-zinc-200 dark:bg-zinc-700 dark:border-zinc-600 rounded-lg shadow-md";
+        "p-4 bg-white border border-zinc-200 dark:bg-zinc-200 rounded-lg shadow-md";
       postElement.innerHTML = `
                 <a href="/post/?id=${post.id}">
                 ${
@@ -19,7 +19,9 @@ export async function loadPosts(posts) {
                     : ""
                 }
                 <div>
-                    <div class="font-semibold mb-1">${post.title}</div>
+                    <div class="font-semibold mb-1 dark:text-black">${
+                      post.title
+                    }</div>
                     <div class="text-sm text-gray-500">${post.author.name}</div>
                 </div>
                 </a>

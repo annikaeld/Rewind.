@@ -8,7 +8,9 @@ async function loadPostById(postId) {
     if (post) {
       postContainer.innerHTML = `
       <div class="max-h-screen w-auto">
-                <h2 class="font-semibold mb-1">${post.title}</h2>
+                <h2 class="font-semibold mb-1 dark:text-black">${
+                  post.title
+                }</h2>
                 ${
                   post.media
                     ? `<div class="flex justify-center">
