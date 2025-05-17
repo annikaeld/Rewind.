@@ -30,8 +30,8 @@ async function loadPostById(postId) {
                 ${
                   post.editable
                     ? `<div class="flex justify-end space-x-2">
-                    <button  class="bg-lime-400 text-black px-4 py-1 rounded-md font-semibold hover:bg-lime-300" onclick="onClickEditPost()">Edit</button>
-                    <button  class="bg-lime-400 text-black px-4 py-1 rounded-md font-semibold hover:bg-lime-300" onclick="onClickDeletePost()">Delete</button>
+                    <button  class="bg-lime-400 text-black px-4 py-1 rounded-md font-semibold hover:bg-lime-300 h-11" onclick="onClickEditPost()">Edit</button>
+                    <button  class="bg-lime-400 text-black px-4 py-1 rounded-md font-semibold hover:bg-lime-300 h-11" onclick="onClickDeletePost()">Delete</button>
                     </div>`
                     : ""
                 }
