@@ -38,7 +38,7 @@ async function loadEditPostById(postId) {
               post.tags && post.tags.length > 0 ? `${post.tags.join(", ")}` : ""
             }" class="w-full p-2 border bg-zinc-100 rounded-md mt-4 border dark:border-indigo-950 border-gray-700 placeholder-gray-700 text-sm">
             <div class="mt-2 flex justify-end">
-                <button type="submit" class="bg-lime-400 mt-4 text-black px-4 py-1 rounded-md font-semibold hover:bg-lime-300 dark:border-indigo-950">
+                <button type="submit" class="bg-lime-400 mt-4 text-black px-4 py-1 rounded-md font-semibold hover:bg-lime-300 border dark:border-indigo-950">
                     Save
                 </button>
             </div>
