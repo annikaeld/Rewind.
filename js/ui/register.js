@@ -31,4 +31,22 @@ async function handleRegisterSubmit(event) {
     }
 }
 
+/**
+ * Toggles the visibility of the password input field.
+ */
+function setupPasswordVisibilityToggle() {
+    const passwordInput = document.getElementById("password");
+    const togglePassword = document.getElementById("togglePassword");
+    if (passwordInput && togglePassword) {
+        const icon = togglePassword.querySelector("i");
+        togglePassword.addEventListener("click", function () {
+            const type = passwordInput.type === "password" ? "text" : "password";
+            passwordInput.type = type;
+            icon.classList.toggle("fa-eye");
+            icon.classList.toggle("fa-eye-slash");
+        });
+    }
+}
+
 document.getElementById('registerForm').addEventListener('submit', handleRegisterSubmit);
+document.addEventListener("DOMContentLoaded", setupPasswordVisibilityToggle);

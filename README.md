@@ -2,7 +2,7 @@
 
 ![Project Logo](img/rewind-logo.png)
 
-JavaScript techniques applied to implement the front-end functionality for a social media application
+JavaScript techniques applied to implement the front-end functionality for a social media application. The application is in both light mode and dark mode.
 
 ## Description
 
@@ -44,5 +44,7 @@ npm run build
 ## Contributing/Contact
 
 The project page is on https://github.com/annikaeld/javascript2. Raise an [issue](https://github.com/annikaeld/javascript2/issues) on the project page if you have any feedback.
+
+[My Project Board](https://github.com/users/annikaeld/projects/1)
 
 [My linkedin page](https://www.linkedin.com/in/annika-eld%C3%B8y-6ba352198/)
