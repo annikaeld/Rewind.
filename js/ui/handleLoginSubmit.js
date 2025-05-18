@@ -14,7 +14,6 @@ import {
  * @param {Event} event
  */
 async function handleLoginSubmit(event) {
-    console.log("Login form submitted");
     event.preventDefault();
 
     const { email, password } = getFormValues("loginForm");

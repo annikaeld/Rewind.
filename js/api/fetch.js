@@ -16,7 +16,9 @@ export async function authFetch(url, options = { method: "GET" }) {
 
     try {
         const response = await fetch(url, requestOptions);
-
+        if (response.status === 404) {
+            return null; // Handle 404 by returning null
+        }
         if (!response.ok) {
             const errorBody = await response.text();
             console.error("Response Error Body:", errorBody);

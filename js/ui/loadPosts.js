@@ -8,6 +8,11 @@ import { getPosts } from "../api/posts.js";
 export async function loadPosts(posts) {
   const postsContainer = document.getElementById("feed");
   postsContainer.innerHTML = ""; // Clear existing posts
+  if (!posts || !posts.data || posts.data.length === 0) {
+    postsContainer.innerHTML =
+      '<div class="text-center text-gray-500">No posts available.</div>';
+    return;
+  }
   try {
     posts.data.forEach((post) => {
       const postElement = document.createElement("div");

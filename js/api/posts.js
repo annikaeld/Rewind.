@@ -51,7 +51,9 @@ export async function searchPosts(searchFor, searchType) {
   try {
     const searchUri = getSearchUri(searchFor, searchType);
     const response = await authFetch(searchUri);
-
+    if (response === null) {
+      return null; // Handle 404 by returning null
+    }
     if (!response.ok) {
       throw new Error(`Failed to fetch posts: ${response.statusText}`);
     }
