@@ -1,6 +1,11 @@
 import { getPost } from "/js/api/post.js";
 import { deletePost } from "/js/api/post.js";
 
+/**
+ * Loads a post by its ID and displays it in the post container.
+ * @param {string} postId - The ID of the post to load.
+ * @returns {Promise<void>}
+ */
 async function loadPostById(postId) {
   const postContainer = document.getElementById("post-container");
   try {
@@ -36,7 +41,7 @@ async function loadPostById(postId) {
                     : ""
                 }
                 
-     
+
       </div>`;
     } else {
       postContainer.innerHTML = `<p class="text-red-500">Post not found.</p>`;
@@ -47,15 +52,24 @@ async function loadPostById(postId) {
   }
 }
 
+/**
+ * Redirects to the edit page for the current post.
+ * @returns {Promise<void>}
+ */
 export async function onClickEditPost() {
   window.location.href = `/post/edit.html?id=${postId}`;
 }
 
+/**
+ * Deletes the current post and updates the UI.
+ * @returns {Promise<void>}
+ */
 export async function onClickDeletePost() {
   await deletePost(postId);
   const postContainer = document.getElementById("post-container");
   postContainer.innerHTML = `<p class="text-red-500">Post deleted.</p>`;
 }
+
 // Attach functions to the window object to make them globally accessible
 window.onClickEditPost = onClickEditPost;
 window.onClickDeletePost = onClickDeletePost;

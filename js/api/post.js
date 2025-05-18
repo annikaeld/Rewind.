@@ -2,6 +2,13 @@ import { API_BASE, API_SOCIAL, API_POSTS } from "./constants.js";
 import { authFetch } from "./fetch.js";
 import { load } from "../storage/load.js";
 
+/**
+ * Fetches a single post by ID, including author information.
+ * Adds an 'editable' property if the current user is the author.
+ * @param {string} id - The ID of the post to fetch.
+ * @returns {Promise<Object>} The post data.
+ * @throws Will throw an error if the fetch fails.
+ */
 export async function getPost(id) {
   try {
     const profile = load("profile");
@@ -21,6 +28,12 @@ export async function getPost(id) {
   }
 }
 
+/**
+ * Publishes a new post.
+ * @param {Object} postObject - The post data to publish.
+ * @returns {Promise<Object>} The response data from the API.
+ * @throws Will throw an error if the request fails.
+ */
 export async function publishPost(postObject) {
   try {
       const response = await authFetch(API_BASE + API_SOCIAL + API_POSTS,
@@ -41,6 +54,13 @@ export async function publishPost(postObject) {
   }
 }
 
+/**
+ * Updates an existing post by ID.
+ * @param {string} postId - The ID of the post to update.
+ * @param {Object} postObject - The updated post data.
+ * @returns {Promise<boolean>} True if the update was successful.
+ * @throws Will throw an error if the update fails.
+ */
 export async function putPost(postId, postObject) {
   try {
     const response = await authFetch(API_BASE + API_SOCIAL + API_POSTS + `/${postId}`, {
@@ -57,6 +77,12 @@ export async function putPost(postId, postObject) {
   }
 }
 
+/**
+ * Creates a new post.
+ * @param {Object} postObject - The post data to create.
+ * @returns {Promise<string>} The ID of the newly created post.
+ * @throws Will throw an error if the creation fails.
+ */
 export async function postPost(postObject) {
   try {
     const response = await authFetch(API_BASE + API_SOCIAL + API_POSTS, {
@@ -66,7 +92,6 @@ export async function postPost(postObject) {
     if (!response.ok) {
       throw new Error(`Failed to create post: ${response.statusText}`);
     }
-    //log response body
     const responseBody = await response.json();
     const data = responseBody.data;
     const id = data.id;
@@ -77,6 +102,12 @@ export async function postPost(postObject) {
   }
 }
 
+/**
+ * Deletes a post by ID.
+ * @param {string} postId - The ID of the post to delete.
+ * @returns {Promise<boolean>} True if the deletion was successful.
+ * @throws Will throw an error if the deletion fails.
+ */
 export async function deletePost(postId) {
   try {
     const response = await authFetch(API_BASE + API_SOCIAL + API_POSTS + `/${postId}`, {

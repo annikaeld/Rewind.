@@ -1,10 +1,13 @@
-import { API_BASE, API_AUTH, API_REGISTER } from '../constants.js';
-import { request } from '../request.js';
-import { clearMessages, displayErrors, displaySuccess } from '../../ui/messages.js';
-import { getFormValues } from '../../ui/getFormValues.js';
-import { getMessageDivs } from '../../ui/getMessageDivs.js';
+import { clearMessages, displayErrors, displaySuccess } from './messages.js';
+import { getFormValues } from './getFormValues.js';
+import { getMessageDivs } from './getMessageDivs.js';
+import { registerUser } from '../api/auth/registerUser.js';
 
-document.getElementById('registerForm').addEventListener('submit', async function (event) {
+/**
+ * Handles the registration form submission.
+ * @param {Event} event
+ */
+async function handleRegisterSubmit(event) {
     event.preventDefault();
 
     const { name, email, password } = getFormValues('registerForm');
@@ -12,7 +15,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     clearMessages(errorMessageDiv, successMessageDiv);
 
     try {
-        const { response, data } = await request(API_BASE + API_AUTH + API_REGISTER, 'POST', { name, email, password });
+        const { response, data } = await registerUser(name, email, password);
 
         if (response.ok) {
             displaySuccess(successMessageDiv, 'Registration successful! You can now log in.');
@@ -26,4 +29,6 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         console.error('Error:', error);
         errorMessageDiv.textContent = 'An error occurred. Please try again later.';
     }
-});
+}
+
+document.getElementById('registerForm').addEventListener('submit', handleRegisterSubmit);

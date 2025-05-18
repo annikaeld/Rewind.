@@ -2,6 +2,12 @@ import { getPost } from "/js/api/post.js";
 import { getFormValues } from "./getFormValues.js";
 import { putPost, postPost } from "/js/api/post.js";
 
+/**
+ * Loads the post data by ID and populates the edit form.
+ * If no postId is provided, initializes an empty form for a new post.
+ * @param {string|null} postId - The ID of the post to edit, or null to create a new post.
+ * @returns {Promise<void>}
+ */
 async function loadEditPostById(postId) {
   const postContainer = document.getElementById("post-container");
   try {
@@ -55,6 +61,12 @@ async function loadEditPostById(postId) {
   }
 }
 
+/**
+ * Attaches a submit event listener to the edit post form.
+ * @param {string|null} postId - The ID of the post to edit, or null for new post.
+ * @param {string} formId - The id of the form element.
+ * @returns {void}
+ */
 function attachSubmitEventListener(postId, formId) {
   const form = document.getElementById(formId);
   if (form) {
@@ -67,25 +79,28 @@ function attachSubmitEventListener(postId, formId) {
   }
 }
 
+/**
+ * Saves the post (create or update) based on the presence of postId.
+ * @param {string|null} postId - The ID of the post to update, or null to create a new post.
+ * @returns {Promise<void>}
+ */
 export async function savePost(postId) {
   const { title, content, imageUrl, tags } = getFormValues("editPostForm");
 
   // Use the first line of content as the title if title is not provided
-  const derivedTitle = title || content.split("\n")[0]; // Split content by lines and use the first line
+  const derivedTitle = title || content.split("\n")[0];
 
   const postObject = {
     title: derivedTitle,
     body: content,
     ...(tags &&
       tags.trim() && {
-        // Only include tags if they are provided and not empty
-        tags: tags.split(",").map((tag) => tag.trim()), // Split tags by commas and trim whitespace
+        tags: tags.split(",").map((tag) => tag.trim()),
       }),
     ...(imageUrl && {
-      // Only include media if imageUrl is set
       media: {
         url: imageUrl,
-        alt: "Post image", // Default alt text
+        alt: "Post image",
       },
     }),
   };

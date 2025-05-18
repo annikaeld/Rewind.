@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg" href="/img/small-logo.png">
     <link rel="stylesheet" href="/css/style.css" />
-    <script type="module" src="js/api/auth/login.js"></script>
+    <script type="module" src="js/ui/handleLoginSubmit.js"></script>
     <title>Login | Rewind</title>
 </head>
 
@@ -27,12 +27,12 @@
             <img src="/img/dark-mode-logo.png" alt="Rewind logo" class="mx-auto h-20 mb-4 block dark:hidden">
             <img src="/img/rewind-logo.png" alt="Rewind logo" class="mx-auto h-20 mb-4 hidden dark:block">
             <div class="mb-4">
-                <label class="block text-zinc-50 text-sm font-sans font-bold mb-2" for="username">
+                <label class="block text-zinc-50 text-sm font-sans font-bold mb-2" for="email">
                     Login
                 </label>
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-zinc-900 font-sans leading-tight focus:outline-none focus:shadow-outline"
-                    type="email" id="email" name="email" placeholder="Email" required>
+                    type="email" id="email" name="email" placeholder="Email" autocomplete="on" required>
             </div>
             <div class="mb-6">
 

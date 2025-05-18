@@ -1,5 +1,10 @@
 import { getPosts } from "../api/posts.js";
 
+/**
+ * Loads and displays a list of posts in the feed container.
+ * @param {Object} posts - The posts data object.
+ * @returns {void}
+ */
 export async function loadPosts(posts) {
   const postsContainer = document.getElementById("feed");
   postsContainer.innerHTML = ""; // Clear existing posts
@@ -32,6 +37,11 @@ export async function loadPosts(posts) {
   }
 }
 
+/**
+ * Loads all posts from the API and displays them in the feed container.
+ * Redirects to the homepage if fetching posts fails (e.g., not logged in).
+ * @returns {void}
+ */
 export async function loadAllPosts() {
   const postsContainer = document.getElementById("feed");
   postsContainer.innerHTML = ""; // Clear existing posts

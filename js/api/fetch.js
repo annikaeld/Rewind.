@@ -1,5 +1,13 @@
 import { headers } from "./headers.js";
 
+/**
+ * Performs an authenticated fetch request with the appropriate headers.
+ * Logs response errors and rethrows fetch errors.
+ * @param {string} url - The URL to fetch.
+ * @param {Object} [options={ method: "GET" }] - The fetch options (method, body, etc).
+ * @returns {Promise<Response>} The fetch response.
+ * @throws Will throw an error if the fetch fails.
+ */
 export async function authFetch(url, options = { method: "GET" }) {
     const requestOptions = {
         ...options,

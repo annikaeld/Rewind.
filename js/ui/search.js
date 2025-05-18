@@ -2,6 +2,11 @@ import { getFormValues } from "./getFormValues.js";
 import { searchPosts } from "/js/api/posts.js";
 import { loadPosts } from "./loadPosts.js";
 
+/**
+ * Handles the search form submission:
+ * Gets form values, determines search type, fetches posts, and loads them.
+ * @returns {Promise<void>}
+ */
 async function doSearch() {
     const { searchFor } = getFormValues('searchForm');
     const searchType = getSearchType();
@@ -23,6 +28,10 @@ function getSearchType() {
     return checked ? checked.value : null;
 }
 
+/**
+ * Toggles the visibility of the dropdown menu.
+ * @returns {void}
+ */
 function toggleDropdownMenuVisibility() {
     const menu = document.getElementById('dropdownMenu');
     if (menu) {
@@ -32,6 +41,12 @@ function toggleDropdownMenuVisibility() {
     }
 }
 
+/**
+ * Attaches a submit event listener to the specified form.
+ * Prevents default submission and triggers doSearch.
+ * @param {string} formId - The id of the form to attach the listener to.
+ * @returns {void}
+ */
 function attachSubmitEventListener(formId) {
     const form = document.getElementById(formId);
     if (form) {
@@ -44,6 +59,10 @@ function attachSubmitEventListener(formId) {
     }
 }
 
+/**
+ * Attaches a click event listener to the dropdown button to toggle menu visibility.
+ * @returns {void}
+ */
 function attachDropdownButtonListener() {
     const dropdownButton = document.getElementById('dropdownDefaultButton');
     if (dropdownButton) {
@@ -54,6 +73,7 @@ function attachDropdownButtonListener() {
 /**
  * Updates the dropdown button text to match the selected radio option,
  * and closes the dropdown menu after a selection is made.
+ * @returns {void}
  */
 export function attachDropdownRadioListeners() {
     document.querySelectorAll('input[name="searchType"]').forEach(radio => {
@@ -64,7 +84,10 @@ export function attachDropdownRadioListeners() {
     });
 }
 
-// Initialize the search form handler
+/**
+ * Initializes the search form handler and dropdown listeners when DOM is loaded.
+ * @returns {void}
+ */
 document.addEventListener("DOMContentLoaded", () => {
     attachSubmitEventListener("searchForm");
     attachDropdownButtonListener();
