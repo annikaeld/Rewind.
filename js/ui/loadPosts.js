@@ -3,7 +3,6 @@ import { getPosts } from "../api/posts.js";
 export async function loadPosts(posts) {
   const postsContainer = document.getElementById("feed");
   postsContainer.innerHTML = ""; // Clear existing posts
-  console.log("loadPosts");
   try {
     posts.data.forEach((post) => {
       const postElement = document.createElement("div");
