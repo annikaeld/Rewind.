@@ -35,7 +35,12 @@ export async function loadPosts(posts) {
 export async function loadAllPosts() {
   const postsContainer = document.getElementById("feed");
   postsContainer.innerHTML = ""; // Clear existing posts
-  const posts = await getPosts();
-  await loadPosts(posts);
+  try {
+    const posts = await getPosts();
+    await loadPosts(posts);
+  } catch (error) {
+    console.error("Error loading posts:", error);
+    window.location.href = "/";
+  }
 }
 loadAllPosts();
