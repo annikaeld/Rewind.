@@ -8,10 +8,10 @@ import { loadPosts } from "./loadPosts.js";
  * @returns {Promise<void>}
  */
 async function doSearch() {
-    const { searchFor } = getFormValues('searchForm');
-    const searchType = getSearchType();
-    const posts = await searchPosts(searchFor, searchType);
-    await loadPosts(posts);
+  const { searchFor } = getFormValues("searchForm");
+  const searchType = getSearchType();
+  const posts = await searchPosts(searchFor, searchType);
+  await loadPosts(posts);
 }
 
 /**
@@ -19,13 +19,13 @@ async function doSearch() {
  * @returns {string|null} The selected search type, or null if none selected.
  */
 function getSearchType() {
-    const form = document.getElementById('dropdownRadioForm');
-    if (!form) {
-        console.error('dropdownRadioForm not found');
-        return null;
-    }
-    const checked = form.querySelector('input[name="searchType"]:checked');
-    return checked ? checked.value : null;
+  const form = document.getElementById("dropdownRadioForm");
+  if (!form) {
+    console.error("dropdownRadioForm not found");
+    return null;
+  }
+  const checked = form.querySelector('input[name="searchType"]:checked');
+  return checked ? checked.value : null;
 }
 
 /**
@@ -33,12 +33,12 @@ function getSearchType() {
  * @returns {void}
  */
 function toggleDropdownMenuVisibility() {
-    const menu = document.getElementById('dropdownMenu');
-    if (menu) {
-        menu.classList.toggle('hidden');
-    } else {
-        console.error("Dropdown menu element not found!");
-    }
+  const menu = document.getElementById("dropdownMenu");
+  if (menu) {
+    menu.classList.toggle("hidden");
+  } else {
+    console.error("Dropdown menu element not found!");
+  }
 }
 
 /**
@@ -48,15 +48,15 @@ function toggleDropdownMenuVisibility() {
  * @returns {void}
  */
 function attachSubmitEventListener(formId) {
-    const form = document.getElementById(formId);
-    if (form) {
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
-            doSearch();
-        });
-    } else {
-        console.error(`Form with id "${formId}" not found.`);
-    }
+  const form = document.getElementById(formId);
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      doSearch();
+    });
+  } else {
+    console.error(`Form with id "${formId}" not found.`);
+  }
 }
 
 /**
@@ -64,10 +64,10 @@ function attachSubmitEventListener(formId) {
  * @returns {void}
  */
 function attachDropdownButtonListener() {
-    const dropdownButton = document.getElementById('dropdownDefaultButton');
-    if (dropdownButton) {
-        dropdownButton.addEventListener('click', toggleDropdownMenuVisibility);
-    }
+  const dropdownButton = document.getElementById("dropdownDefaultButton");
+  if (dropdownButton) {
+    dropdownButton.addEventListener("click", toggleDropdownMenuVisibility);
+  }
 }
 
 /**
@@ -76,12 +76,12 @@ function attachDropdownButtonListener() {
  * @returns {void}
  */
 export function attachDropdownRadioListeners() {
-    document.querySelectorAll('input[name="searchType"]').forEach(radio => {
-        radio.addEventListener('change', function () {
-            document.getElementById('dropdownSelectedText').textContent = this.value;
-            document.getElementById('dropdownMenu').classList.add('hidden');
-        });
+  document.querySelectorAll('input[name="searchType"]').forEach((radio) => {
+    radio.addEventListener("change", function () {
+      document.getElementById("dropdownSelectedText").textContent = this.value;
+      document.getElementById("dropdownMenu").classList.add("hidden");
     });
+  });
 }
 
 /**
@@ -89,7 +89,7 @@ export function attachDropdownRadioListeners() {
  * @returns {void}
  */
 document.addEventListener("DOMContentLoaded", () => {
-    attachSubmitEventListener("searchForm");
-    attachDropdownButtonListener();
-    attachDropdownRadioListeners();
+  attachSubmitEventListener("searchForm");
+  attachDropdownButtonListener();
+  attachDropdownRadioListeners();
 });
