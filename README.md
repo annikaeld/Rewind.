@@ -1,6 +1,6 @@
 # javascript2
 
-![Project Logo](img/screenshot-rewind)
+![Project Logo](img/screenshot-rewind.png)
 
 JavaScript techniques applied to implement the front-end functionality for a social media application.
 This is a social media platform aiming for a retro vibe, both in the choice of name and in the design.
