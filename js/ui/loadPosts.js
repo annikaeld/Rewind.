@@ -1,0 +1,61 @@
+import { getPosts } from "../api/posts.js";
+
+/**
+ * Loads and displays a list of posts in the feed container.
+ * @param {Object} posts - The posts data object.
+ * @returns {void}
+ */
+export async function loadPosts(posts) {
+  const postsContainer = document.getElementById("feed");
+  postsContainer.innerHTML = ""; // Clear existing posts
+  if (!posts || !posts.data || posts.data.length === 0) {
+    postsContainer.innerHTML =
+      '<div class="text-center text-gray-500">No posts available.</div>';
+    return;
+  }
+  try {
+    posts.data.forEach((post) => {
+      const postElement = document.createElement("div");
+      postElement.className =
+        "p-4 bg-white border border-zinc-200 dark:bg-zinc-200 rounded-lg shadow-md";
+      postElement.innerHTML = `
+                <a href="/post/?id=${post.id}">
+                ${
+                  post.media
+                    ? `<div class="flex justify-center">
+                    <img class="rounded-md mb-2 justify-center" src="${post.media.url}" alt="${post.title}">
+                    </div>`
+                    : ""
+                }
+                <div>
+                    <div class="font-semibold mb-1 dark:text-black">${
+                      post.title
+                    }</div>
+                    <div class="text-sm text-gray-500">${post.author.name}</div>
+                </div>
+                </a>
+            `;
+      postsContainer.appendChild(postElement);
+    });
+  } catch (error) {
+    console.error("Error loading posts:", error);
+  }
+}
+
+/**
+ * Loads all posts from the API and displays them in the feed container.
+ * Redirects to the homepage if fetching posts fails (e.g., not logged in).
+ * @returns {void}
+ */
+export async function loadAllPosts() {
+  const postsContainer = document.getElementById("feed");
+  postsContainer.innerHTML = ""; // Clear existing posts
+  try {
+    const posts = await getPosts();
+    await loadPosts(posts);
+  } catch (error) {
+    console.error("Error loading posts:", error);
+    window.location.href = "/";
+  }
+}
+loadAllPosts();
